@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import JoblyApi from '../api';
+import JoblyApi from "../api";
 
 function RegistrationForm({hideForm}){
     const [formData, setFormData] = useState();
@@ -8,10 +8,11 @@ function RegistrationForm({hideForm}){
         const { name, value } = evt.target;
         setFormData(fData => ({...fData, [name]: value }));
     };
-    const handleSubmit = (evt) => {
+    const handleSubmit = async (evt) => {
         evt.preventDefault();
-        console.log('submitted', formData);
-        // hideForm();
+        const userToken = await JoblyApi.request('auth/register', formData, 'post');
+        JoblyApi.token = userToken;
+        evt.target.reset();
     };
 
     return (

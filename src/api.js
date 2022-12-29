@@ -15,7 +15,7 @@ class JoblyApi {
     //this has been provided to show you another way to pass the token. you are only expected to read this code for this project.
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${JoblyApi.token}` };
-    const params = (method === "get")
+    const params = (method === "get" || method === 'post')
         ? data
         : {};
 
