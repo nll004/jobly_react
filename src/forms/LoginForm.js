@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import JoblyApi from "../api";
 
 function LoginForm({hideForm}) {
     const [formData, setFormData] = useState();
@@ -16,13 +17,17 @@ function LoginForm({hideForm}) {
     return (
         <form onSubmit={handleSubmit}>
                 <input  type='text'
+                        required
                         name='username'
                         placeholder="Username"
+                        autoComplete="username"
                         onChange={handleChange}
                     />
                 <input  type='password'
+                        required
                         name='password'
                         placeholder="Password"
+                        autoComplete='current-password'
                         onChange={handleChange}
                     />
             <button> Login </button>
