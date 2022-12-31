@@ -21,26 +21,31 @@ function RegistrationForm({hideForm}){
                         placeholder="Create an username"
                         required
                         name="username"
+                        autoComplete="username"
                         onChange={handleChange}/>
                 <input  type='text'
                         placeholder="Enter your first name"
                         required
                         name="firstName"
+                        autoComplete="given-name"
                         onChange={handleChange}/>
                 <input  type='text'
                         placeholder="Enter your last name"
                         required
                         name="lastName"
+                        autoComplete="family-name"
                         onChange={handleChange}/>
                 <input  type='email'
                         placeholder="Enter your email"
                         required
                         name="email"
+                        autoComplete="email"
                         onChange={handleChange}/>
                 <input  type='password'
                         placeholder="Create a password"
                         required
                         name="password"
+                        autoComplete="new-password"
                         onChange={handleChange}/>
             <button> Save </button>
             <button onClick={hideForm}> Cancel </button>
