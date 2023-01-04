@@ -9,7 +9,6 @@ function Nav(){
             <NavLink to='/signup'> Sign Up </NavLink>
             <NavLink to='/jobs'> Jobs </NavLink>
             <NavLink to='/companies'> Companies </NavLink>
-            <NavLink to='/companies/:name'> Company Name </NavLink>
             <NavLink to='/profile/:username'> Profile </NavLink>
         </nav>
     )

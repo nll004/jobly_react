@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import JoblyApi from "../api";
+import JoblyApi from "../apis/api";
 
 function LoginForm({hideForm}) {
     const [formData, setFormData] = useState();
