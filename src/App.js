@@ -1,6 +1,6 @@
 import React from 'react';
-import RouteList from './routes/RouteList';
-import Nav from './NavBar';
+import RouteList from './routes-nav/RouteList';
+import Nav from './routes-nav/NavBar';
 
 function App() {
   return (
