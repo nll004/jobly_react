@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { JOBLY_FRONTEND_URL } from "../apis/api";
 
 function JobCard({job: j}) {
     return (
@@ -7,9 +7,9 @@ function JobCard({job: j}) {
             <h3>{j.title}</h3>
             <p> Salary: {j.salary || "N/A"} </p>
             <p> Company:
-                <Link to={`company/${j.companyHandle}`}>
+                <a href={`${JOBLY_FRONTEND_URL}/companies/${j.companyHandle}`}>
                     {j.companyName}
-                </Link>
+                </a>
             </p>
         </div>
     )

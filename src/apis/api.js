@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
+const JOBLY_BACKEND_URL = process.env.BACKEND_BASE_URL || "http://localhost:3001";
+const JOBLY_FRONTEND_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
 
 /** API Class with static methods to communicate with the API  */
 
@@ -11,7 +12,7 @@ class JoblyApi {
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);
 
-    const url = `${BASE_URL}/${endpoint}`;
+    const url = `${JOBLY_BACKEND_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${JoblyApi.token}` };
     const params = (method === "get")
         ? data
@@ -54,4 +55,4 @@ JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
     "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
 
-export default JoblyApi;
+export { JoblyApi, JOBLY_BACKEND_URL, JOBLY_FRONTEND_URL};
