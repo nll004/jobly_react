@@ -1,12 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import CustomLink from "../routes-nav/CustomLink";
 
 function CompanyCard({company: c}){
     return(
         <div id={c.handle}>
-            <Link to={`${c.handle}`}>
-                <h4>{c.name}</h4>
-            </Link>
+            <CustomLink route={`companies/${c.handle}`} text={c.name}/>
             <p>Description: {c.description}</p>
             <p>Employees: {c.numEmployees}</p>
         </div>
