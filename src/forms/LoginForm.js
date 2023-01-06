@@ -8,10 +8,14 @@ function LoginForm({hideForm}) {
         const { name, value } = evt.target;
         setFormData(fData => ({ ...fData, [name]: value }));
     };
+
     function handleSubmit(evt){
         evt.preventDefault();
-        console.log('submitted', formData);
-        // JoblyApi.request()
+        async function login() {
+            await JoblyApi.login(formData);
+        };
+        login();
+        evt.target.reset();
     };
 
     return (

@@ -29,7 +29,13 @@ class JoblyApi {
 
   // Individual API routes
 
-  /** Get list of all companies */
+  /** Send username/password and store the received token */
+  static async login(formData){
+    const res = await JoblyApi.request('auth/token', formData, 'post');
+    JoblyApi.token = res.token;
+  };
+
+  /** Get list of companies that meet the specified query */
   static async searchCompanies(query){
     const searchQuery = query;
     let res = await this.request('companies', searchQuery);
@@ -55,10 +61,10 @@ class JoblyApi {
   }
 }
 
-// for now, put token ("testuser" / "password" on class)
-JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-    "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-    "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+// for development, can use login ("testuser" / "password" ) and following token
+// JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+//     "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
+//     "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
 
 export { JoblyApi, JOBLY_BACKEND_URL, JOBLY_FRONTEND_URL};
