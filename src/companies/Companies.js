@@ -56,6 +56,7 @@ function CompanyList() {
             <div>
                 {companyList && companyList.map((c) => <CompanyCard key={c.handle} company={c} /> )}
                 {!companyList && <h6>Loading...</h6>}
+                {companyList.length === 0 && <h6>No companies found. Edit your search criteria and try again.</h6> }
             </div>
         </>
     )

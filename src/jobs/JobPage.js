@@ -21,7 +21,7 @@ function JobDetailPage(){
         <>
         <h1>Job Detail Page</h1>
         <h2>{job.title}</h2>
-        <p>{job.salary}</p>
+        <p>Salary: ${job.salary || "-"}</p>
         {job.equity && <p>Equity option available</p>}
         <CustomLink route={`companies/${job.company.handle}`} text={job.company.name}/>
         </>
