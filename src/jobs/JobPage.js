@@ -14,7 +14,6 @@ function JobDetailPage(){
           setJob(await JoblyApi.getJob(id));
         };
         getJobById();
-        console.log(job)
       }, [id]);
 
     if (job) return (

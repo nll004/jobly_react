@@ -2,7 +2,6 @@ import React from "react";
 import CustomLink from "../routes-nav/CustomLink";
 
 function JobCard({job: j}) {
-    console.log(j)
     return (
         <div id={`job-${j.id}`}>
             <h3>
