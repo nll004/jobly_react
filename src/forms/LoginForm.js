@@ -9,12 +9,9 @@ function LoginForm({hideForm}) {
         setFormData(fData => ({ ...fData, [name]: value }));
     };
 
-    function handleSubmit(evt){
+    async function handleSubmit(evt){
         evt.preventDefault();
-        async function login() {
-            await JoblyApi.login(formData);
-        };
-        login();
+        await JoblyApi.login(formData);
         evt.target.reset();
     };
 

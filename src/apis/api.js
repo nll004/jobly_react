@@ -29,11 +29,17 @@ class JoblyApi {
 
   // Individual API routes
 
-  /** Send username/password and store the received token */
+  /** Send username/password and store the returned token */
   static async login(formData){
     const res = await JoblyApi.request('auth/token', formData, 'post');
     JoblyApi.token = res.token;
   };
+
+  /** Send new user data to register and store the returned token */
+  static async signup(formData){
+    const userToken = await JoblyApi.request('auth/register', formData, 'post');
+    JoblyApi.token = userToken;
+  }
 
   /** Get list of companies that meet the specified query */
   static async searchCompanies(query){

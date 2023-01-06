@@ -8,10 +8,10 @@ function RegistrationForm({hideForm}){
         const { name, value } = evt.target;
         setFormData(fData => ({...fData, [name]: value }));
     };
+
     const handleSubmit = async (evt) => {
         evt.preventDefault();
-        const userToken = await JoblyApi.request('auth/register', formData, 'post');
-        JoblyApi.token = userToken;
+        await JoblyApi.signup(formData);
         evt.target.reset();
     };
 
