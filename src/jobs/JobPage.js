@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { JoblyApi } from "../apis/api";
-import CustomLink from "../routes-nav/CustomLink";
 
 function JobDetailPage(){
     const { id } = useParams();
@@ -22,7 +21,7 @@ function JobDetailPage(){
         <h2>{job.title}</h2>
         <p>Salary: ${job.salary || "-"}</p>
         {job.equity && <p>Equity option available</p>}
-        <CustomLink route={`companies/${job.company.handle}`} text={job.company.name}/>
+        <Link to={`/companies/${job.company.handle}`}> {job.company.name} </Link>
         </>
     )
 };

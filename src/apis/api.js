@@ -39,12 +39,11 @@ class JoblyApi {
   static async signup(formData){
     const userToken = await JoblyApi.request('auth/register', formData, 'post');
     JoblyApi.token = userToken;
-  }
+  };
 
   /** Get list of companies that meet the specified query */
   static async searchCompanies(query){
-    const searchQuery = query;
-    let res = await this.request('companies', searchQuery);
+    let res = await this.request('companies', query);
     return res.companies;
   };
 
@@ -56,8 +55,7 @@ class JoblyApi {
 
   /** Get list of all jobs */
   static async searchJobs(query){
-    const searchQuery = query;
-    let res = await this.request('jobs', searchQuery);
+    let res = await this.request('jobs', query);
     return res.jobs;
   };
 

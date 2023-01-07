@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {JoblyApi} from "../apis/api";
 
-function RegistrationForm({hideForm}){
+function RegistrationForm({showForm}){
     const [formData, setFormData] = useState();
 
     const handleChange = (evt) => {
@@ -13,6 +13,7 @@ function RegistrationForm({hideForm}){
         evt.preventDefault();
         await JoblyApi.signup(formData);
         evt.target.reset();
+        showForm(false);
     };
 
     return (
@@ -48,7 +49,7 @@ function RegistrationForm({hideForm}){
                         autoComplete="new-password"
                         onChange={handleChange}/>
             <button> Save </button>
-            <button onClick={hideForm}> Cancel </button>
+            <button onClick={()=>showForm(false)}> Cancel </button>
         </form>
     )
 };
