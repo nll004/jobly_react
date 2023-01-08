@@ -30,19 +30,22 @@ class JoblyApi {
 
   /** Send username/password and store the returned token */
   static async login(formData){
-    console.log('submitted login', formData, "token", JoblyApi.token);
     const res = await JoblyApi.request('auth/token', formData, 'post');
-    if(res.error)
     JoblyApi.token = res.token;
-    console.log("after login token", JoblyApi.token )
-
+    return res.token
   };
 
   /** Send new user data to register and store the returned token */
   static async signup(formData){
-    const userToken = await JoblyApi.request('auth/register', formData, 'post');
-    JoblyApi.token = userToken;
+    const res = await JoblyApi.request('auth/register', formData, 'post');
+    JoblyApi.token = res.token;
+    return res.token
   };
+
+  static async getUser(username){
+    const res = await JoblyApi.request(`users/${username}`);
+    return res.user
+  }
 
   /** Get list of companies that meet the specified query */
   static async searchCompanies(query){

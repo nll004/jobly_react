@@ -1,31 +1,36 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
+import UserContext from "../context-hooks/UserContext";
+import AuthFuncContext from "../context-hooks/AuthFuncContext";
 import LoginForm from "../forms/LoginForm";
 import RegistrationForm from "../forms/RegistrationForm";
 
 function HomePage() {
     const [showLoginForm, setShowLoginForm] = useState(false);
     const [showSignupForm, setShowSignupForm] = useState(false);
+    const {currentUser} = useContext(UserContext);
+    const {logout} = useContext(AuthFuncContext);
 
-    function toggleLoginForm(evt) {
-        evt.preventDefault();
+    function toggleLoginForm() {
         setShowLoginForm(current => !current);
         if(showSignupForm) setShowSignupForm(false);
     };
-    function toggleSignupForm(evt) {
-        evt.preventDefault();
+    function toggleSignupForm() {
         setShowSignupForm(current => !current);
         if(showLoginForm) setShowLoginForm(false);
     };
 
     return (
         <>
-        <h1>Jobly</h1>
-        <p>Home page demo</p>
-        <button onClick={toggleLoginForm} > Login </button>
-        <button onClick={toggleSignupForm} > Signup </button>
-
-        {showLoginForm && <LoginForm hideForm={toggleLoginForm} />}
-        {showSignupForm && <RegistrationForm hideForm={toggleSignupForm} />}
+            <p>Welcome to Jobly. Your dream job is just a click away! </p>
+        {currentUser && <button onSubmit={logout}> Logout </button> }
+        {!currentUser &&
+            <div>
+                <button onClick={toggleLoginForm}> Login </button>
+                <button onClick={toggleSignupForm}> Create Account </button>
+            </div>
+        }
+        {showLoginForm && <LoginForm showForm={setShowLoginForm} />}
+        {showSignupForm && <RegistrationForm showForm={setShowSignupForm} />}
         </>
     )
 };
