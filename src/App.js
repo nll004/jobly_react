@@ -7,7 +7,7 @@ import AuthFuncContext from './context-hooks/AuthFuncContext';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
-  const [joblyToken, setjoblyToken] = useState(null);
+  const [joblyToken, setJoblyToken] = useState(null);
   const username = useRef(null);
 
   useEffect(()=>{
@@ -26,12 +26,11 @@ function App() {
   async function login(loginInfo){
     const token = await JoblyApi.login(loginInfo);
     username.current = loginInfo.username;
-    setjoblyToken(token);
+    setJoblyToken(token);
   };
 
   function logout(){
-    setCurrentUser(null);
-    setjoblyToken(null);
+    setJoblyToken(null);
   };
 
   return (

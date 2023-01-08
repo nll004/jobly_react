@@ -22,7 +22,7 @@ function HomePage() {
     return (
         <>
             <p>Welcome to Jobly. Your dream job is just a click away! </p>
-        {currentUser && <button onSubmit={logout}> Logout </button> }
+        {currentUser && <button onClick={logout}> Logout </button> }
         {!currentUser &&
             <div>
                 <button onClick={toggleLoginForm}> Login </button>
