@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { useParams, Link } from "react-router-dom";
-import { JoblyApi } from "../apis/api";
+import { JoblyApi } from "../apis/joblyApi";
 
 function JobDetailPage(){
     const { id } = useParams();

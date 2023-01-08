@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import {JoblyApi} from "../apis/api";
+import {JoblyApi} from "../apis/joblyApi";
 
-function LoginForm({hideForm}) {
+function LoginForm({showForm}) {
     const [formData, setFormData] = useState();
 
     function handleChange(evt) {
@@ -13,6 +13,7 @@ function LoginForm({hideForm}) {
         evt.preventDefault();
         await JoblyApi.login(formData);
         evt.target.reset();
+        showForm(false);
     };
 
     return (
@@ -32,7 +33,7 @@ function LoginForm({hideForm}) {
                         onChange={handleChange}
                     />
             <button> Login </button>
-            <button onClick={hideForm}> Cancel </button>
+            <button onClick={()=>showForm(false)}> Cancel </button>
         </form>
     )
 };

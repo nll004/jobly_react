@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {JoblyApi} from "../apis/api";
+import {JoblyApi} from "../apis/joblyApi";
 
 function RegistrationForm({showForm}){
     const [formData, setFormData] = useState();
