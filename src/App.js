@@ -31,6 +31,7 @@ function App() {
 
   function logout(){
     setJoblyToken(null);
+    JoblyApi.token = null;
   };
 
   return (
