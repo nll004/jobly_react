@@ -35,36 +35,38 @@ class JoblyApi {
     return res.token
   };
 
-  /** Send new user data to register and store the returned token */
+  /** Send new user data to register and store the returned token.*/
   static async signup(formData){
     const res = await JoblyApi.request('auth/register', formData, 'post');
     JoblyApi.token = res.token;
     return res.token
   };
 
+  /** Get user data by username. A valid token must be present on the JoblyAPI class */
   static async getUser(username){
     const res = await JoblyApi.request(`users/${username}`);
     return res.user
   }
 
-  /** Get list of companies that meet the specified query */
+  /** Get list of companies that meet the specified query. No token required. */
   static async searchCompanies(query){
     let res = await this.request('companies', query);
     return res.companies;
   };
 
-  /** Get details on a company by handle. */
+  /** Get details on a company by handle. No token required.*/
   static async getCompany(handle) {
     let res = await this.request(`companies/${handle}`);
     return res.company;
   };
 
-  /** Get list of all jobs */
+  /** Get list of all jobs given a query string. No token required. */
   static async searchJobs(query){
     let res = await this.request('jobs', query);
     return res.jobs;
   };
 
+  /** Get a single job using job id. No token required.*/
   static async getJob(id){
     let res = await this.request(`jobs/${id}`);
     return res.job

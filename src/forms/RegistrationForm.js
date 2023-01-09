@@ -1,8 +1,9 @@
-import React, {useState} from "react";
-import {JoblyApi} from "../apis/joblyApi";
+import React, {useState, useContext} from "react";
+import AuthFuncContext from "../context-hooks/AuthFuncContext";
 
 function RegistrationForm({showForm}){
     const [formData, setFormData] = useState();
+    const {registerNewUser} = useContext(AuthFuncContext);
 
     const handleChange = (evt) => {
         const { name, value } = evt.target;
@@ -11,7 +12,7 @@ function RegistrationForm({showForm}){
 
     const handleSubmit = async (evt) => {
         evt.preventDefault();
-        await JoblyApi.signup(formData);
+        await registerNewUser(formData);
         evt.target.reset();
         showForm(false);
     };

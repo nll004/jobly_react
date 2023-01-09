@@ -23,6 +23,12 @@ function App() {
     }
   }, [joblyToken]);
 
+  async function registerNewUser(loginInfo){
+    const token = await JoblyApi.signup(loginInfo);
+    username.current = loginInfo.username;
+    setJoblyToken(token);
+  };
+
   async function login(loginInfo){
     const token = await JoblyApi.login(loginInfo);
     username.current = loginInfo.username;
@@ -35,7 +41,7 @@ function App() {
   };
 
   return (
-    <AuthFuncContext.Provider value={{login, logout}}>
+    <AuthFuncContext.Provider value={{login, logout, registerNewUser}}>
       <UserContext.Provider value={{currentUser, joblyToken}}>
         <div className="App">
           <Nav />
