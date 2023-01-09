@@ -28,14 +28,14 @@ class JoblyApi {
 
   // Individual API routes
 
-  /** Send username/password and store the returned token */
+  /** Send username/password and store the returned token on class. */
   static async login(formData){
     const res = await JoblyApi.request('auth/token', formData, 'post');
     JoblyApi.token = res.token;
     return res.token
   };
 
-  /** Send new user data to register and store the returned token.*/
+  /** Send new user data to register and store the returned token on class.*/
   static async signup(formData){
     const res = await JoblyApi.request('auth/register', formData, 'post');
     JoblyApi.token = res.token;

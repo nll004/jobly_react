@@ -3,7 +3,7 @@ import AuthFuncContext from "../context-hooks/AuthFuncContext";
 
 function LoginForm({showForm}) {
     const [formData, setFormData] = useState();
-    const {login} = useContext(AuthFuncContext);
+    const {userLogin} = useContext(AuthFuncContext);
 
     function handleChange(evt) {
         const { name, value } = evt.target;
@@ -12,7 +12,7 @@ function LoginForm({showForm}) {
 
     async function handleSubmit(evt){
         evt.preventDefault();
-        login(formData);
+        userLogin(formData);
         evt.target.reset();
         showForm(false);
     };

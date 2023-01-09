@@ -8,7 +8,7 @@ function HomePage() {
     const [showLoginForm, setShowLoginForm] = useState(false);
     const [showSignupForm, setShowSignupForm] = useState(false);
     const {currentUser} = useContext(UserContext);
-    const {logout} = useContext(AuthFuncContext);
+    const {userLogout} = useContext(AuthFuncContext);
 
     function toggleLoginForm() {
         setShowLoginForm(current => !current);
@@ -22,7 +22,7 @@ function HomePage() {
     return (
         <>
             <p>Welcome to Jobly. Your dream job is just a click away! </p>
-        {currentUser && <button onClick={logout}> Logout </button> }
+        {currentUser && <button onClick={userLogout}> Logout </button> }
         {!currentUser &&
             <div>
                 <button onClick={toggleLoginForm}> Login </button>
