@@ -4,6 +4,8 @@ import Nav from './routes-nav/NavBar';
 import { JoblyApi } from './apis/joblyApi';
 import UserContext from './context-hooks/UserContext';
 import AuthFuncContext from './context-hooks/AuthFuncContext';
+import jwt from "jsonwebtoken";
+
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -12,16 +14,18 @@ function App() {
 
   useEffect(()=>{
     if(joblyToken) {
-      async function getAndSaveCurrentUser(){
-        const res = await JoblyApi.getUser(username.current);
-        setCurrentUser(res);
-      };
       getAndSaveCurrentUser();
     }
     else {
       setCurrentUser(null);
     }
   }, [joblyToken]);
+
+  /** Uses username at login to retrieve and store user data. */
+  async function getAndSaveCurrentUser(){
+    const token = await JoblyApi.getUser(username.current);
+    setCurrentUser(token);
+  };
 
   async function registerNewUser(loginInfo){
     const token = await JoblyApi.signup(loginInfo);
@@ -49,7 +53,6 @@ function App() {
         </div>
       </UserContext.Provider>
     </AuthFuncContext.Provider>
-
   );
 }
 
