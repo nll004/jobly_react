@@ -4,29 +4,25 @@ import Nav from './routes-nav/NavBar';
 import { JoblyApi } from './apis/joblyApi';
 import UserContext from './context-hooks/UserContext';
 import AuthFuncContext from './context-hooks/AuthFuncContext';
-// import jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 const JOBLY_TOKEN_STORAGE_ID = 'JOBLY_TOKEN';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [joblyToken, setJoblyToken] = useState(null);
-  // const [joblyToken, setjoblyToken] = useLocalStorage(joblyToken_STORAGE_ID);
-
-
-  // localStorage.setItem(JOBLY_TOKEN_STORAGE_ID, token)
-  // const localStorageToken = localStorage.getItem(JOBLY_TOKEN_STORAGE_ID);
 
   useEffect(()=>{
     if(joblyToken) {
-      console.log('useEffect, token exists-', "username->", username.current)
-      // let {username} = jwt.decode(joblyToken);
-      // getAndSaveCurrentUser(username);
+      // refresh token in local storage
+      localStorage.setItem(JOBLY_TOKEN_STORAGE_ID, joblyToken);
+      let {username} = jwt.decode(joblyToken);
+      getAndSaveCurrentUser(username);
     }
     else {
-      console.log('useEffect no token->')
-      setCurrentUser(null);
-      JoblyApi.token = null;
+      // check for saved token
+      const savedToken = localStorage.getItem(JOBLY_TOKEN_STORAGE_ID);
+      savedToken ? setCurrentUser(savedToken) : setCurrentUser(null);
     }
   }, [joblyToken]);
 
