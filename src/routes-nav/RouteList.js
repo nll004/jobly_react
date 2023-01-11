@@ -5,16 +5,17 @@ import CompanyList from "../companies/Companies";
 import CompanyProfile from "../companies/CompanyProf";
 import JobList from "../jobs/Jobs";
 import JobDetailPage from "../jobs/JobPage";
+import UserProfilePage from "../user/Profile";
 
 function RouteList(){
     return (
         <Routes>
-            <Route path="" element={<HomePage />} />
+            <Route path="" element={<HomePage />}/>
             <Route path="jobs" element={<JobList />}/>
             <Route path="jobs/:id" element={<JobDetailPage />}/>
-            <Route path="companies" element={<CompanyList />} />
-            <Route path="companies/:name" element={<CompanyProfile /> }/>
-            <Route path="profile/:username" element={<h1> User Profile </h1>}/>
+            <Route path="companies" element={<CompanyList />}/>
+            <Route path="companies/:name" element={<CompanyProfile />}/>
+            <Route path="profile/:username" element={<UserProfilePage />}/>
             <Route path="*" element={<h1> 404 </h1>}/>
         </Routes>
     )

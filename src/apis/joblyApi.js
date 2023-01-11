@@ -2,14 +2,14 @@ import axios from "axios";
 
 const JOBLY_BACKEND_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
-/** API Class with static methods to communicate with the API  */
+/** API Class with static methods to communicate with the Jobly API  */
 
 class JoblyApi {
   // the token for interactive with the API will be stored here.
   static token;
 
   static async request(endpoint, data = {}, method = "get") {
-    console.debug("API Call:", endpoint, data, method);
+    console.debug("API Call:", "Endpoint->", endpoint, "Data->", data, "Method->", method);
 
     const url = `${JOBLY_BACKEND_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${JoblyApi.token}` };
@@ -18,13 +18,16 @@ class JoblyApi {
         : {};
 
     try {
-      return (await axios({ url, method, data, params, headers })).data;
-    } catch (err) {
+      const res = await (await axios({ url, method, data, params, headers })).data;
+      console.debug("API Response:", res);
+      return res
+    }
+    catch (err) {
       console.error("API Error:", err.response);
       let message = err.response.data.error.message;
       throw Array.isArray(message) ? message : [message];
-    }
-  }
+    };
+  };
 
   // Individual API routes
 
@@ -46,6 +49,17 @@ class JoblyApi {
   static async getUser(username){
     const res = await JoblyApi.request(`users/${username}`);
     return res.user
+  };
+
+  /** Allows editing of user data and returns new user data */
+  static async editUser(username, formData){
+    const res = await JoblyApi.request(`users/${username}`, formData, 'patch');
+    return res.user
+  };
+
+  /** Deletes user. Returns response object -> { deleted: {username: "userName"}}  */
+  static async deleteUser(username){
+    await JoblyApi.request(`users/${username}`, undefined, 'delete');
   }
 
   /** Get list of companies that meet the specified query. No token required. */

@@ -13,7 +13,6 @@ function RegistrationForm({showForm}){
     const handleSubmit = async (evt) => {
         evt.preventDefault();
         await registerNewUser(formData);
-        evt.target.reset();
         showForm(false);
     };
 
