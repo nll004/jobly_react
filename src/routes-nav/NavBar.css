@@ -1,0 +1,55 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+}
+
+#navbar-logo {
+    font-size: 3.5rem;
+    font-weight: bolder;
+    font-family: "Courier New";
+    padding: 2%;
+    color: rgb(67, 103, 180);
+    text-decoration-color: gold;
+}
+
+.navlink-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 10%;
+    font-family: "Georgia";
+}
+
+.navlink {
+    flex: auto;
+    font-size: 1.5rem;
+    color: grey;
+    padding: 0% 3% 0% 3% ;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.navlink:hover {
+    color: black;
+}
+
+/* active navlinks */
+.active{
+    color: black;
+    text-decoration: underline;
+}
+
+#navbar-logout-btn {
+    margin-left: 5%;
+    padding: 2%;
+    color: whitesmoke;
+    background-color: rgb(67, 103, 180);
+    border-radius: 15px;
+    border: none;
+}
+
+#navbar-logout-btn:hover {
+    color: black;
+    background-color: gold;
+}
