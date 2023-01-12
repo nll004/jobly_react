@@ -3,6 +3,7 @@ import UserContext from "../context-hooks/UserContext";
 import AuthFuncContext from "../context-hooks/AuthFuncContext";
 import LoginForm from "../forms/LoginForm";
 import RegistrationForm from "../forms/RegistrationForm";
+import "./Home.css";
 
 function HomePage() {
     const [showLoginForm, setShowLoginForm] = useState(false);
@@ -21,16 +22,35 @@ function HomePage() {
 
     return (
         <>
-            <p>Welcome to Jobly. Your dream job is just a click away! </p>
-        {currentUser && <button onClick={userLogout}> Logout </button> }
-        {!currentUser &&
-            <div>
-                <button onClick={toggleLoginForm}> Login </button>
-                <button onClick={toggleSignupForm}> Create Account </button>
+            <p className="Home-message">
+                Welcome to Jobly. Your dream job is just a click away!
+            </p>
+            <div className="Home-btn-container">
+                {currentUser &&
+                    <button onClick={userLogout}
+                            className='Home-btn primary'>
+                        Logout
+                    </button> }
+                {!currentUser &&
+                    <>
+                    <button onClick={toggleLoginForm}
+                            className='Home-btn primary'>
+                        Login
+                    </button>
+                    <button onClick={toggleSignupForm}
+                            className='Home-btn secondary'>
+                        Create Account
+                    </button>
+                    </>}
             </div>
-        }
-        {showLoginForm && <LoginForm showForm={setShowLoginForm} />}
-        {showSignupForm && <RegistrationForm showForm={setShowSignupForm} />}
+            <div className="Home-form-container">
+                {showLoginForm &&
+                    <LoginForm  showForm={setShowLoginForm}
+                                className='Home-form' />}
+                {showSignupForm &&
+                    <RegistrationForm showForm={setShowSignupForm}
+                                      className='Home-form' />}
+            </div>
         </>
     )
 };

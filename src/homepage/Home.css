@@ -1,0 +1,39 @@
+.Home-message {
+    margin: 12%;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.Home-btn-container {
+    text-align: center;
+}
+
+.Home-btn {
+    color: whitesmoke;
+    font-size: 1.5rem;
+    padding: 15px 20px;
+    border-radius: 20px;
+    border: none;
+}
+
+.Home-btn:hover {
+    color: black;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.primary {
+    background-color: rgb(67, 103, 180);
+}
+
+.secondary {
+    background-color: grey;
+    margin-left: 10px;
+}
+
+.Home-form-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
