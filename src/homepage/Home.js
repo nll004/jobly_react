@@ -42,13 +42,11 @@ function HomePage() {
                         Create Account
                     </button> </>}
             </div>
-            <div className="Home-form-container">
+            <div className="Form-container">
                 {showLoginForm &&
-                    <LoginForm  showForm={setShowLoginForm}
-                                className='Home-form' />}
+                    <LoginForm  showForm={setShowLoginForm} />}
                 {showSignupForm &&
-                    <RegistrationForm showForm={setShowSignupForm}
-                                      className='Home-form' />}
+                    <RegistrationForm showForm={setShowSignupForm}/>}
             </div>
         </>
     )

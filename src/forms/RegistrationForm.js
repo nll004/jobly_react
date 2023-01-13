@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthFuncContext from "../context-hooks/AuthFuncContext";
+import "./CommonForms.css";
 
 function RegistrationForm({ showForm }) {
     const [formData, setFormData] = useState();
@@ -18,10 +19,11 @@ function RegistrationForm({ showForm }) {
         showForm(false);
         return redirect('/jobs');
     };
+
     return (
         <form onSubmit={handleSubmit}>
-            <h3>Create an Account</h3>
-            <h4>Error messages</h4>
+            <h2 className="Form-header">Create an Account</h2>
+            <p className="Form-error">Error messages</p>
             <input className="Form-input"
                 type='text'
                 placeholder="Create an username"

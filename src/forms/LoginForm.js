@@ -1,7 +1,7 @@
 import React, {useState, useContext} from "react";
 import {useNavigate} from "react-router-dom";
 import AuthFuncContext from "../context-hooks/AuthFuncContext";
-import "./LoginForm.css";
+import "./CommonForms.css";
 
 function LoginForm({showForm}) {
     const [formData, setFormData] = useState();
@@ -23,10 +23,8 @@ function LoginForm({showForm}) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <button onClick={()=>showForm(false)}
-                    className='Form-close-btn'> X </button>
-            <h3>Login</h3>
-            <h4>Error messages</h4>
+            <h2 className="Form-header"> Login </h2>
+            <p className="Form-error">Error messages</p>
                 <input  className="Form-input"
                         type='text'
                         required
@@ -43,7 +41,13 @@ function LoginForm({showForm}) {
                         autoComplete='current-password'
                         onChange={handleChange}
                     />
-            <button className="Form-submit-btn"> Login </button>
+            <button className="Form-submit-btn">
+                Login
+            </button>
+            <button onClick={() => showForm(false)}
+                className='Form-close-btn'>
+                X
+            </button>
         </form>
     )
 };
