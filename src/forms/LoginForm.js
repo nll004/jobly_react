@@ -4,9 +4,10 @@ import AuthFuncContext from "../context-hooks/AuthFuncContext";
 import "./CommonForms.css";
 
 function LoginForm({showForm}) {
-    const [formData, setFormData] = useState();
+    const [formData, setFormData] = useState(null);
+    const [errors, setErrors] = useState(null);
     const redirect = useNavigate();
-    const {userLogin} = useContext(AuthFuncContext);
+    const { userLogin } = useContext(AuthFuncContext);
 
     function handleChange(evt) {
         const { name, value } = evt.target;
@@ -15,16 +16,15 @@ function LoginForm({showForm}) {
 
     async function handleSubmit(evt){
         evt.preventDefault();
-        userLogin(formData);
-        evt.target.reset();
-        showForm(false);
-        return redirect('/jobs');
+        let result = await userLogin(formData);
+        if (result.success) return redirect('/jobs');
+        else setErrors(result.errors);
     };
 
     return (
         <form onSubmit={handleSubmit}>
             <h2 className="Form-header"> Login </h2>
-            <p className="Form-error">Error messages</p>
+            {errors && <p className="Form-error">{ errors[0] }</p>}
                 <input  className="Form-input"
                         type='text'
                         required
@@ -45,7 +45,7 @@ function LoginForm({showForm}) {
                 Login
             </button>
             <button onClick={() => showForm(false)}
-                className='Form-close-btn'>
+                    className='Form-close-btn'>
                 X
             </button>
         </form>

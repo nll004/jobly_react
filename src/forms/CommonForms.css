@@ -66,3 +66,8 @@
 .Form-header {
     font-size: 2rem;
 }
+
+.Form-error {
+    color: red;
+    font-size: 1.25rem;
+}

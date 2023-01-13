@@ -4,7 +4,8 @@ import AuthFuncContext from "../context-hooks/AuthFuncContext";
 import "./CommonForms.css";
 
 function RegistrationForm({ showForm }) {
-    const [formData, setFormData] = useState();
+    const [formData, setFormData] = useState(null);
+    const [errors, setErrors] = useState(null);
     const redirect = useNavigate();
     const { registerNewUser } = useContext(AuthFuncContext);
 
@@ -13,17 +14,17 @@ function RegistrationForm({ showForm }) {
         setFormData(fData => ({ ...fData, [name]: value }));
     };
 
-    const handleSubmit = async (evt) => {
+    async function handleSubmit(evt) {
         evt.preventDefault();
-        await registerNewUser(formData);
-        showForm(false);
-        return redirect('/jobs');
+        let result = await registerNewUser(formData);
+        if (result.success) return redirect('/jobs');
+        else setErrors(result.errors);
     };
 
     return (
         <form onSubmit={handleSubmit}>
             <h2 className="Form-header">Create an Account</h2>
-            <p className="Form-error">Error messages</p>
+            {errors && <p className="Form-error"> {errors[0]} </p>}
             <input className="Form-input"
                 type='text'
                 placeholder="Create an username"
