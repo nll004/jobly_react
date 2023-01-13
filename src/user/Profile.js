@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
 import { useParams, Navigate } from "react-router-dom";
 import { JoblyApi } from "../apis/joblyApi";
+import EditUserForm from "../forms/EditUserForm";
+import ProfileCard from "./ProfileCard";
 import UserContext from "../context-hooks/UserContext";
 import AuthFuncContext from "../context-hooks/AuthFuncContext";
-import EditUserForm from "../forms/EditUserForm";
 
 function UserProfilePage(){
     const {username: paramUsername} = useParams();
@@ -11,7 +12,7 @@ function UserProfilePage(){
     const {userLogout} = useContext(AuthFuncContext);
     const [showForm, setShowForm] = useState(false);
 
-    if((currentUser && currentUser.username !== paramUsername) || !currentUser) return <Navigate to='/' replace={true}/>
+    if (!currentUser || (currentUser.username !== paramUsername)) return <Navigate to='/' replace={true}/>
 
     async function handleDelete(){
         await JoblyApi.deleteUser(currentUser.username);
@@ -19,15 +20,18 @@ function UserProfilePage(){
     };
 
     return (
-        <>
-            {currentUser && <>
-                <h1>Welcome {currentUser.username}</h1>
-                <p>First Name: {currentUser.firstName}</p>
-                <p>Last Name: {currentUser.lastName}</p>
-                <p>Email: {currentUser.email}</p>
-                <button onClick={()=>setShowForm(current => !current)}> Edit </button>
-                <button onClick={handleDelete}> Delete User </button>
-                {showForm && <EditUserForm showForm={setShowForm} user={currentUser}/>}
+        <>  {currentUser && <>
+                <h1> Welcome {currentUser.firstName}</h1>
+                <ProfileCard user={currentUser} />
+                <button className="Home-btn primary"
+                        onClick={() => setShowForm(current => !current)}>
+                    Edit
+                </button>
+                <button className='Home-btn secondary'
+                        onClick={handleDelete}>
+                    Delete User
+                </button>
+            {showForm && <EditUserForm showForm={setShowForm} user={currentUser}/>}
             </>}
         </>
     )

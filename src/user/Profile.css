@@ -1,0 +1,13 @@
+.Prof-card {
+    position: relative;
+    left: 5%;
+}
+
+.Prof-details {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.Prof-span {
+    color: rgb(67, 103, 180);
+}
