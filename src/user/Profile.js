@@ -11,7 +11,7 @@ function UserProfilePage(){
     const {userLogout} = useContext(AuthFuncContext);
     const [showForm, setShowForm] = useState(false);
 
-    if(currentUser && currentUser.username !== paramUsername || !currentUser) return <Navigate to='/' replace={true}/>
+    if((currentUser && currentUser.username !== paramUsername) || !currentUser) return <Navigate to='/' replace={true}/>
 
     async function handleDelete(){
         await JoblyApi.deleteUser(currentUser.username);

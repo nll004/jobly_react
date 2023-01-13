@@ -15,6 +15,7 @@ function HomePage() {
         setShowLoginForm(current => !current);
         if(showSignupForm) setShowSignupForm(false);
     };
+
     function toggleSignupForm() {
         setShowSignupForm(current => !current);
         if(showLoginForm) setShowLoginForm(false);
@@ -31,8 +32,7 @@ function HomePage() {
                             className='Home-btn primary'>
                         Logout
                     </button> }
-                {!currentUser &&
-                    <>
+                {!currentUser && <>
                     <button onClick={toggleLoginForm}
                             className='Home-btn primary'>
                         Login
@@ -40,8 +40,7 @@ function HomePage() {
                     <button onClick={toggleSignupForm}
                             className='Home-btn secondary'>
                         Create Account
-                    </button>
-                    </>}
+                    </button> </>}
             </div>
             <div className="Home-form-container">
                 {showLoginForm &&
