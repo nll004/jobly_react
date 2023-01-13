@@ -11,3 +11,42 @@
 .Prof-span {
     color: rgb(67, 103, 180);
 }
+
+.Prof-prompt-container {
+    text-align: center;
+    width: auto;
+    padding: 5%;
+    border: 2px solid black;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+}
+
+.Prof-del-prompt {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.Prof-btn{
+    background-color: grey;
+    padding: 3%;
+    border-radius: 15px;
+    border: none;
+    color: whitesmoke;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0px 10px;
+}
+
+.Prof-btn:hover {
+    border: 1px solid black;
+    background-color: darkgray;
+}
+
+.Prof-cancel-btn {
+    background-color: rgb(67, 103, 180);
+}

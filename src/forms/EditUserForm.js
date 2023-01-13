@@ -18,7 +18,7 @@ function EditUserForm({user, showForm}){
             const resp = await JoblyApi.editUser(user.username, formData);
             user.firstName = resp.firstName;
             user.lastName = resp.lastName;
-            showForm(false);
+            showForm();
         } catch (errors) {
             console.error("failed to edit user->", errors);
         };
