@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import {JoblyApi} from "../apis/joblyApi";
 import SearchForm from "../forms/SearchForm";
 import JobCard from "./JobCard";
+import "../App.css";
+import "./Jobs.css";
 
 function JobList(){
     const [jobList, setJobList] = useState(null);
@@ -29,13 +31,18 @@ function JobList(){
     };
 
     return (
+
         <>
-            <h1>Job Postings</h1>
-            <SearchForm inputName='title' changeFunc={handleChange} searchFunc={submitJobSearch}/>
-            <div>
+            <SearchForm inputName='title'
+                        changeFunc={handleChange}
+                        searchFunc={submitJobSearch} />
+            <h1 className="App-page-title"> Job Postings </h1>
+            <div className="Jobs-results-container">
                 {jobList && jobList.map((j) => <JobCard key={j.id} job={j} /> )}
-                {!jobList && <h6>Loading...</h6>}
-                {jobList && jobList.length === 0 && <h6>No jobs found. Edit your search criteria and try again.</h6> }
+                {!jobList &&
+                    <h5>Loading...</h5>}
+                {(jobList && jobList.length === 0) &&
+                    <h5>No jobs found. Edit your search criteria and try again.</h5>}
             </div>
         </>
     )

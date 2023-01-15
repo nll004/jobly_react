@@ -1,0 +1,63 @@
+/* Company list page styles ==========================*/
+.Company-results-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Company card styles ===============================*/
+.Company-card-container {
+    padding: 2%;
+    border: 1px solid grey;
+    border-radius: 15px;
+    box-shadow: 2px 2px grey;
+    margin: 5%;
+    text-align: center;
+
+}
+
+.Company-card-container:hover {
+    background-color: rgb(216, 216, 216);
+    border-bottom: 2px solid black;
+}
+
+.Company-card {
+    color: black;
+}
+
+.Company-card-title {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 5px;
+}
+
+.Company-card-details {
+    font-size: 1.25rem;
+    margin: 5px 0 0 10px;
+    padding: 5px;
+
+}
+
+/* Company profile page styles =======================*/
+.Company-title {
+    font-size: 2.5rem;
+    margin: 2% 0 2% 5%;
+    width: 80%;
+    border-bottom: 1px solid grey;
+}
+
+.Company-prof-details {
+    text-align: center;
+    font-size: 1.25rem;
+    margin: 3%;
+}
+
+.Company-prof-job-list-heading{
+    border-top: 1px solid grey;
+    font-size: 1.5rem;
+    padding: 2% 0 0 5%;
+}
+
+.Company-prof-job-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}

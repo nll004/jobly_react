@@ -34,16 +34,20 @@ function UserProfilePage(){
 
     return (
         <>  {currentUser && <>
-                <h1> Welcome {currentUser.firstName}</h1>
+                <h1 className="Prof-title">
+                    Welcome {currentUser.firstName}
+                </h1>
                 <ProfileCard user={currentUser} />
-                <button className="Prof-btn"
+                <div className="Prof-btn-container">
+                    <button className="Prof-btn"
                         onClick={toggleEditForm}>
-                    Edit
-                </button>
-                <button className='Prof-btn'
+                        Edit
+                    </button>
+                    <button className='Prof-btn'
                         onClick={toggleDelPrompt}>
-                    Delete User
-                </button>
+                        Delete User
+                    </button>
+                </div>
             {showEditForm && <EditUserForm showForm={toggleEditForm} user={currentUser} />}
             {deletePrompt && <DeletePrompt showForm={toggleDelPrompt} handleDelete={handleDelete} />}
             </>}

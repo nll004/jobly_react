@@ -17,8 +17,8 @@
 }
 
 .Home-btn:hover {
-    color: black;
     border: 1px solid black;
+    background-color: darkgrey;
     cursor: pointer;
 }
 

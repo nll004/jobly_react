@@ -7,11 +7,12 @@
     border: 1px solid black;
     border-radius: 10px;
     text-align: center;
-    box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+    box-shadow: 0 0 20px black;
 }
 
 .Form-header {
     font-size: 2rem;
+    margin: 5px;
 }
 
 .Form-error {
@@ -46,7 +47,7 @@
 .Form-submit-btn {
     background-color: rgb(67, 103, 180);
     color: whitesmoke;
-    width: 50%;
+    width: 30%;
     padding: 2%;
     margin-bottom: 8px;
     border-radius: 20px;
@@ -58,14 +59,14 @@
 .Form-submit-btn:hover {
     cursor: pointer;
     border: 1px solid black;
-    color: gold;
+    background-color: darkgrey;
 }
 
 .Form-close-btn {
     position: absolute;
-    right: 5%;
-    top: 3%;
-    padding: 2%;
+    right: 0%;
+    top: 0%;
+    padding: 4%;
     background-color: transparent;
     color: grey;
     border: none;

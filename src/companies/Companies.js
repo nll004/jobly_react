@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import {JoblyApi} from "../apis/joblyApi";
 import CompanyCard from "./CompanyCard";
 import SearchForm from "../forms/SearchForm";
+import "../App.css";
+import "./Companies.css";
 
 function CompanyList() {
     const [companyList, setCompanyList] = useState(null);
@@ -30,15 +32,17 @@ function CompanyList() {
 
     return (
         <>
-            <h1>Company List</h1>
-            <SearchForm inputName='name' changeFunc={handleChange} searchFunc={submitCompanySearch}/>
-            <div>
+            <SearchForm inputName='name'
+                        changeFunc={handleChange}
+                        searchFunc={submitCompanySearch} />
+            <h1 className="App-page-title"> Company List </h1>
+            <div className="Company-results-container">
                 {companyList &&
                     companyList.map((c) => <CompanyCard key={c.handle} company={c} /> )}
                 {!companyList &&
-                    <h6>Loading...</h6>}
+                    <h5>Loading...</h5>}
                 {companyList && companyList.length === 0 &&
-                    <h6>No companies found. Edit your search criteria and try again.</h6> }
+                    <h5>No companies found. Edit your search criteria and try again.</h5> }
             </div>
         </>
     )

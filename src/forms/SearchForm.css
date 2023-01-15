@@ -1,0 +1,35 @@
+.Searchform-container {
+    position: sticky;
+    top: 0%;
+    background-color: white;
+}
+
+.Searchform-container form {
+    background-color: rgb(67, 103, 180);
+    position: relative;
+    padding: 3px 0 3px 20px;
+    box-shadow: 2px 2px 5px black;
+}
+
+.Searchbar {
+    margin: 5px;
+    background-color: whitesmoke;
+    border: none;
+    border-radius: 10px;
+    border-bottom: 2px solid grey;
+    padding: 5px;
+}
+
+.Searchbar:hover{
+    background-color: rgb(255, 252, 238);
+    border-bottom: 2px solid black;
+    cursor: pointer;
+}
+
+.primary-bar {
+    width: 35%;
+}
+
+.secondary-bar {
+    width: 5%;
+}

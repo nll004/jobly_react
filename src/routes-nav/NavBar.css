@@ -51,6 +51,6 @@ nav {
 }
 
 #navbar-logout-btn:hover {
-    color: black;
-    background-color: gold;
+    border: 1px solid black;
+    background-color: darkgrey;
 }
