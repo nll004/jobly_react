@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Navigate } from "react-router-dom";
 import { JoblyApi } from "../apis/joblyApi";
 import UserContext from "../context-hooks/UserContext";
 import "../App.css";
@@ -57,12 +57,12 @@ function JobDetailPage() {
                       className='JobPage-return-link'>
                     Back to results
                 </Link>
-            {!applied &&
+            {(currentUser && !applied) &&
                 <button onClick={handleClick}
                         className='JobPage-apply-btn'>
                     Apply
                 </button> }
-            {applied &&
+            {(currentUser && applied) &&
                 <div className="JobPage-applied">
                     Applied
                 </div>}
