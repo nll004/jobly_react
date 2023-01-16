@@ -14,8 +14,8 @@ class JoblyApi {
     const url = `${JOBLY_BACKEND_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${JoblyApi.token}` };
     const params = (method === "get")
-        ? data
-        : {};
+      ? data
+      : {};
 
     try {
       const res = await (await axios({ url, method, data, params, headers })).data;
@@ -32,38 +32,37 @@ class JoblyApi {
   // Individual API routes
 
   /** Send username/password and store the returned token on class. */
-  static async login(formData){
+  static async login(formData) {
     const res = await JoblyApi.request('auth/token', formData, 'post');
     JoblyApi.token = res.token;
     return res.token
   };
 
   /** Send new user data to register and store the returned token on class.*/
-  static async signup(formData){
+  static async signup(formData) {
     const res = await JoblyApi.request('auth/register', formData, 'post');
     JoblyApi.token = res.token;
     return res.token
   };
 
   /** Get user data by username. A valid token must be present on the JoblyAPI class */
-  static async getUser(username){
+  static async getUser(username) {
     const res = await JoblyApi.request(`users/${username}`);
     return res.user
   };
 
   /** Allows editing of user data and returns new user data */
-  static async editUser(username, formData){
+  static async editUser(username, formData) {
     const res = await JoblyApi.request(`users/${username}`, formData, 'patch');
     return res.user
   };
 
-  /** Deletes user. Returns response object -> { deleted: {username: "userName"}}  */
-  static async deleteUser(username){
-    await JoblyApi.request(`users/${username}`, undefined, 'delete');
-  }
+  static async deleteUser(username) {
+    await JoblyApi.request(`users/${username}`, {}, 'delete');
+  };
 
   /** Get list of companies that meet the specified query. No token required. */
-  static async searchCompanies(query){
+  static async searchCompanies(query) {
     let res = await this.request('companies', query);
     return res.companies;
   };
@@ -75,22 +74,21 @@ class JoblyApi {
   };
 
   /** Get list of all jobs given a query string. No token required. */
-  static async searchJobs(query){
+  static async searchJobs(query) {
     let res = await this.request('jobs', query);
     return res.jobs;
   };
 
   /** Get a single job using job id. No token required.*/
-  static async getJob(id){
+  static async getJob(id) {
     let res = await this.request(`jobs/${id}`);
     return res.job
-  }
-}
+  };
 
-// for development, can use login ("testuser" / "password" ) and following token
-// JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-//     "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-//     "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+  /** Apply to a job */
+  static async applyToJob(username, id) {
+    await this.request(`users/${username}/jobs/${id}`, {}, "post");
+  };
+};
 
-
-export { JoblyApi, JOBLY_BACKEND_URL};
+export { JoblyApi, JOBLY_BACKEND_URL };

@@ -13,7 +13,7 @@ function App() {
     const [joblyToken, setJoblyToken] = useState(null);
 
     useEffect(() => {
-        // If token in state, refresh token in local storage and getUserData
+        // If token in state, refresh token in local storage and get user data
         if (joblyToken) {
             console.debug('useEffect -> token exists')
             localStorage.setItem(JOBLY_TOKEN_STORAGE_ID, joblyToken);

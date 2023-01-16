@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import { JoblyApi } from "../apis/joblyApi";
+import UserContext from "../context-hooks/UserContext";
 import "../App.css";
 import "./Jobs.css";
 
 function JobDetailPage() {
     const { id } = useParams();
-    console.debug("JobDetailPage", "jobId=", id);
-    // need user to see if the person has applied already
-    // need apply function
-
+    const {currentUser} = useContext(UserContext);
+    const [applied, setApplied] = useState(null);
     const [job, setJob] = useState(null);
+
+    console.debug("JobDetailPage", "jobId=", id, "currentUser", currentUser);
 
     useEffect(() => {
         async function getJobById() {
@@ -19,9 +20,23 @@ function JobDetailPage() {
         getJobById();
     }, [id]);
 
+    useEffect(() => { // on every render check to see if user has applied to this job
+        if(currentUser){
+            for(let app of currentUser.applications){
+                if(app == id){ // param id is a string, app is a integer
+                    setApplied(true);
+                }
+            }
+        }
+    });
+
     async function handleClick() {
-        // apply
-        console.log('applied')
+        try{
+            await JoblyApi.applyToJob(currentUser.username, id);
+            setApplied(true);
+        } catch(errors){
+            console.error(errors);
+        }
     }
 
     if (job) return (
@@ -42,10 +57,15 @@ function JobDetailPage() {
                       className='JobPage-return-link'>
                     Back to results
                 </Link>
+            {!applied &&
                 <button onClick={handleClick}
                         className='JobPage-apply-btn'>
                     Apply
-                </button>
+                </button> }
+            {applied &&
+                <div className="JobPage-applied">
+                    Applied
+                </div>}
             </div>
         </>
     )
