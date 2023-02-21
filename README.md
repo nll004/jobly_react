@@ -1,5 +1,5 @@
 # Jobly
-A mock job board that allows the user to create an account, view jobs/companies and one click apply to a job posting. Try it out **[here](http://melodic-attempt.surge.sh/)**.
+A mock job board that allows the user to create an account, search jobs/companies and one click apply to a job posting. Try it out **[here](http://melodic-attempt.surge.sh/)**.
 
 ## Features
 - Register new user
