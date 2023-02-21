@@ -1,15 +1,13 @@
 # Jobly
-Springboard Software Engineering BootCamp - Cohort Jan 2022 
+A mock job board that allows the user to create an account, view jobs/companies and one click apply to a job posting. Try it out **[here](http://melodic-attempt.surge.sh/)**.
 
-Project started: Dec 2022
-
-### About 
-**[Jobly](http://melodic-attempt.surge.sh/)** is a simple mock job board that allows the user to create an account, view jobs/companies and one click apply to a job posting. 
-
-
-
-### Assignment 
-I was given a backend API and instructed to build the user interface with react.js. I needed to create login/signup functionality, allow viewing and searching jobs or companies, as well as provide CRUD functionality for user data. [Jobly_API](https://github.com/nll004/express_API_jobly) is the backend I built previously for this project. We did not use our backend code base for this project however. The backend we were given for this UI was more robust and also generates mock jobs and companies.  
+## Features
+- Register new user
+- Login/logout
+- Search for jobs
+- One click apply
+- Search for companies
+- Visit profile and edit or delete user
 
 ### Technologies Used
 - React.js
@@ -18,7 +16,19 @@ I was given a backend API and instructed to build the user interface with react.
 - React Router
 - Axios
 
-### Development
+[Jobly_API](https://github.com/nll004/express_API_jobly) is the Express.js backend I built for this project. 
+
+## Future Direction For Project
+Given more time, the following would be implemented:
+- Improve styling and layout
+- Introduce change password option
+- Allow user to view a list of all jobs applied to
+- Company profiles to post/edit/delete jobs
+- Admin profile to edit users, companies or jobs
+
+### 
+
+## Setup
 
 In the project directory, you can run:
 
